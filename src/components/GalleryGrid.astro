@@ -26,7 +26,7 @@ const spanClasses = {
       class={`relative overflow-hidden rounded-2xl group ${spanClasses[image.span || "normal"]}`}
     >
       <img
-        src={`${base}${image.src}`}
+        src={`${base}/${image.src}`}
         alt={image.alt}
         loading="lazy"
         decoding="async"
