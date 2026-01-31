@@ -1,0 +1,145 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SEOHead from "../components/SEOHead.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  noindex?: boolean;
+  keywords?: string[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  ogType,
+  noindex,
+  keywords
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+
+// Restaurant data for JSON-LD
+const restaurantSchema = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "La Jardinerie",
+  "alternateName": "La Jardinerie — Guinguette & Bouillon",
+  "description": "Bouillon le midi, guinguette le soir : plats à partager, vins de qualité, musique et grandes tablées à Toulouges près de Perpignan.",
+  "url": Astro.site?.href || "https://lajardinerie.fr",
+  "telephone": "+33400000000",
+  "email": "contact@lajardinerie.fr",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "9 bis Boulevard de Clairfont",
+    "addressLocality": "Toulouges",
+    "postalCode": "66350",
+    "addressRegion": "Occitanie",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 42.6756,
+    "longitude": 2.8331
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Tuesday",
+      "opens": "17:00",
+      "closes": "00:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Wednesday", "Thursday", "Friday"],
+      "opens": "12:00",
+      "closes": "00:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "15:00",
+      "closes": "00:00"
+    }
+  ],
+  "servesCuisine": ["Cuisine française", "Plats à partager", "Bouillon", "Bar à vin"],
+  "priceRange": "€€",
+  "acceptsReservations": "True",
+  "hasMenu": {
+    "@type": "Menu",
+    "url": `${Astro.site?.href || ""}menu`
+  },
+  "sameAs": [
+    "https://www.instagram.com/lajardinerie_66/"
+  ],
+  "image": [
+    `${base}assets/resto.jpg`,
+    `${base}assets/les_fondateurs.jpg`
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.7",
+    "reviewCount": "120"
+  }
+};
+---
+
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#7B7A2A" />
+
+    <SEOHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+      ogType={ogType}
+      noindex={noindex}
+      keywords={keywords}
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${base}apple-touch-icon.png`} />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Fonts fallback (if self-hosted not available) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD Restaurant Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(restaurantSchema)} />
+  </head>
+
+  <body class="min-h-screen flex flex-col bg-cream text-charcoal antialiased">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-olive focus:text-cream focus:rounded-lg"
+    >
+      Aller au contenu principal
+    </a>
+
+    <Header />
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,249 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import Card from "../components/Card.astro";
+import Badge from "../components/Badge.astro";
+import Button from "../components/Button.astro";
+
+const base = import.meta.env.BASE_URL;
+
+// SEO
+const title = "Menu & Carte";
+const description = "Découvrez la carte de La Jardinerie à Toulouges : plats à partager, entrées gourmandes, desserts maison et vins sélectionnés. Cuisine de saison, produits locaux.";
+const keywords = ["menu restaurant Toulouges", "carte guinguette", "plats à partager Perpignan", "cuisine locale"];
+
+// Menu data
+interface MenuItem {
+  name: string;
+  description?: string;
+  price: string;
+  badge?: string;
+}
+
+interface MenuSection {
+  title: string;
+  subtitle?: string;
+  items: MenuItem[];
+}
+
+const menuSections: MenuSection[] = [
+  {
+    title: "Entrées à picorer",
+    subtitle: "Pour commencer en douceur",
+    items: [
+      { name: "Planche mixte à partager", description: "Charcuteries catalanes, fromages affinés, pickles maison", price: "18€", badge: "Populaire" },
+      { name: "Tartare de saumon", description: "Avocat, sésame, agrumes", price: "14€" },
+      { name: "Burrata crémeuse", description: "Tomates anciennes, pesto basilic, huile d'olive", price: "13€" },
+      { name: "Croquetas maison", description: "Jambon ibérique, sauce aïoli", price: "9€" },
+      { name: "Soupe du moment", description: "Selon l'inspiration du chef", price: "8€" }
+    ]
+  },
+  {
+    title: "Plats à partager",
+    subtitle: "L'esprit guinguette",
+    items: [
+      { name: "Côte de boeuf maturée 1kg", description: "Frites maison, sauce béarnaise (pour 2)", price: "58€", badge: "Signature" },
+      { name: "Poulet rôti fermier", description: "Légumes de saison, jus réduit", price: "32€" },
+      { name: "Gambas à la plancha", description: "Ail, persil, piment d'Espelette", price: "28€" },
+      { name: "Souris d'agneau confite", description: "Polenta crémeuse, jus au romarin", price: "26€" },
+      { name: "Poisson du marché", description: "Préparation selon arrivage", price: "MP" }
+    ]
+  },
+  {
+    title: "Côté bouillon",
+    subtitle: "Le midi uniquement",
+    items: [
+      { name: "Bouillon du jour", description: "Recette qui change selon les saisons et l'humeur du chef", price: "14€" },
+      { name: "Bouillon complet", description: "Bouillon + entrée du jour", price: "18€" },
+      { name: "Formule midi", description: "Entrée + bouillon + dessert", price: "24€", badge: "Bon plan" }
+    ]
+  },
+  {
+    title: "Desserts maison",
+    items: [
+      { name: "Crème catalane", description: "Caramélisée à la minute", price: "8€" },
+      { name: "Tarte du moment", description: "Fruits de saison", price: "9€" },
+      { name: "Mousse au chocolat", description: "Noir intense, éclats de noisette", price: "8€" },
+      { name: "Assiette de fromages", description: "Sélection affinée, confiture de figue", price: "12€" },
+      { name: "Café gourmand", description: "Expresso et trio de mignardises", price: "10€" }
+    ]
+  }
+];
+
+const drinks = {
+  title: "Boissons & vins",
+  categories: [
+    {
+      name: "Vins au verre",
+      items: [
+        { name: "Rouge du Roussillon", price: "5€" },
+        { name: "Blanc sec (Côtes Catalanes)", price: "5€" },
+        { name: "Rosé de Provence", price: "5€" },
+        { name: "Vin naturel du moment", price: "7€" }
+      ]
+    },
+    {
+      name: "Softs & apéritifs",
+      items: [
+        { name: "Limonade artisanale", price: "4€" },
+        { name: "Thé glacé maison", price: "4€" },
+        { name: "Bière locale pression", price: "5€" },
+        { name: "Pastis 51", price: "4€" },
+        { name: "Spritz", price: "8€" }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} keywords={keywords}>
+  <!-- Hero -->
+  <section class="relative py-16 sm:py-20 gradient-hero">
+    <div class="container-site">
+      <div class="max-w-3xl">
+        <Badge variant="olive">Notre carte</Badge>
+        <h1 class="font-display text-display-lg sm:text-display-xl text-charcoal mt-4">
+          Menu & Carte
+        </h1>
+        <p class="mt-4 text-lg text-charcoal/70 max-w-2xl">
+          Des produits frais, des saisons et des arrivages. Notre chef compose des plats généreux
+          à partager, avec ce qu'il y a de meilleur chez nos producteurs locaux.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <Badge variant="olive" size="sm">Produits locaux</Badge>
+          <Badge variant="olive" size="sm">De saison</Badge>
+          <Badge variant="olive" size="sm">Fait maison</Badge>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Sections -->
+  {menuSections.map((section, index) => (
+    <Section background={index % 2 === 0 ? "cream" : "white"} padding="md">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-8">
+          <h2 class="font-display text-display-sm text-charcoal">{section.title}</h2>
+          {section.subtitle && (
+            <p class="mt-1 text-charcoal/60">{section.subtitle}</p>
+          )}
+        </div>
+
+        <div class="space-y-4">
+          {section.items.map((item) => (
+            <div class="flex items-start justify-between gap-4 py-4 border-b border-charcoal/10 last:border-0">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="font-semibold text-charcoal">{item.name}</h3>
+                  {item.badge && (
+                    <Badge variant={item.badge === "Signature" ? "terracotta" : "olive"} size="sm">
+                      {item.badge}
+                    </Badge>
+                  )}
+                </div>
+                {item.description && (
+                  <p class="mt-1 text-sm text-charcoal/60">{item.description}</p>
+                )}
+              </div>
+              <span class="font-display text-lg font-semibold text-olive whitespace-nowrap">
+                {item.price}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Section>
+  ))}
+
+  <!-- Drinks Section -->
+  <Section background="white" padding="md">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-8">
+        <h2 class="font-display text-display-sm text-charcoal">{drinks.title}</h2>
+        <p class="mt-1 text-charcoal/60">Belle sélection de vins locaux et boissons rafraîchissantes</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {drinks.categories.map((category) => (
+          <Card padding="md">
+            <h3 class="font-display text-lg font-semibold text-charcoal mb-4">{category.name}</h3>
+            <div class="space-y-3">
+              {category.items.map((item) => (
+                <div class="flex justify-between items-center">
+                  <span class="text-charcoal/80">{item.name}</span>
+                  <span class="font-semibold text-olive">{item.price}</span>
+                </div>
+              ))}
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- Info & CTA -->
+  <Section background="cream" padding="md">
+    <div class="max-w-4xl mx-auto">
+      <Card variant="highlight" padding="lg">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4">
+            <h3 class="font-display text-xl font-semibold text-charcoal">
+              Allergènes & régimes spéciaux
+            </h3>
+            <p class="text-charcoal/70">
+              Allergènes sur demande. N'hésitez pas à nous signaler vos restrictions alimentaires
+              lors de la réservation ou à votre arrivée. Notre équipe s'adapte avec plaisir.
+            </p>
+            <p class="text-sm text-charcoal/50">
+              Options végétariennes disponibles sur la carte.
+            </p>
+          </div>
+          <div class="flex flex-col gap-4 md:items-end">
+            <Button href={`${base}reserver`} variant="primary" size="lg">
+              Réserver une table
+            </Button>
+            <p class="text-sm text-charcoal/60 md:text-right">
+              Carte susceptible de changer selon les arrivages
+            </p>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </Section>
+</BaseLayout>
+
+<!-- Menu Schema -->
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "name": "Menu La Jardinerie",
+  "description": "Carte du restaurant La Jardinerie - Plats à partager, bouillon le midi, desserts maison",
+  "hasMenuSection": [
+    {
+      "@type": "MenuSection",
+      "name": "Entrées à picorer",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Planche mixte à partager",
+          "description": "Charcuteries catalanes, fromages affinés, pickles maison",
+          "offers": { "@type": "Offer", "price": "18", "priceCurrency": "EUR" }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Plats à partager",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Côte de boeuf maturée 1kg",
+          "description": "Frites maison, sauce béarnaise (pour 2)",
+          "offers": { "@type": "Offer", "price": "58", "priceCurrency": "EUR" }
+        }
+      ]
+    }
+  ]
+}
+</script>

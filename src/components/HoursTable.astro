@@ -1,0 +1,39 @@
+---
+interface Hours {
+  day: string;
+  hours: string;
+  closed?: boolean;
+}
+
+interface Props {
+  schedule: Hours[];
+  class?: string;
+}
+
+const { schedule, class: className = "" } = Astro.props;
+---
+
+<div class={`overflow-hidden rounded-2xl border border-charcoal/10 bg-white/60 ${className}`}>
+  <table class="w-full text-sm">
+    <thead class="sr-only">
+      <tr>
+        <th>Jour</th>
+        <th>Horaires</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-charcoal/5">
+      {schedule.map((item) => (
+        <tr class={item.closed ? "text-charcoal/40" : ""}>
+          <td class="px-4 py-3 font-medium">{item.day}</td>
+          <td class="px-4 py-3 text-right">
+            {item.closed ? (
+              <span class="italic">Fermé</span>
+            ) : (
+              item.hours
+            )}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

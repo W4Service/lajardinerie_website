@@ -1,0 +1,244 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import Badge from "../components/Badge.astro";
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
+
+const base = import.meta.env.BASE_URL;
+
+// SEO
+const title = "Le Concept";
+const description = "Découvrez le concept de La Jardinerie à Toulouges : bouillon le midi, guinguette le soir. Une aventure gourmande près de Perpignan, produits locaux et ambiance conviviale.";
+const keywords = ["concept guinguette", "restaurant convivial Toulouges", "plats à partager Perpignan", "bouillon restaurant"];
+
+// Values
+const values = [
+  {
+    icon: "leaf",
+    title: "Produits locaux & de saison",
+    description: "Nous travaillons avec des producteurs de la région pour vous proposer des produits frais, de qualité, au fil des saisons."
+  },
+  {
+    icon: "users",
+    title: "Convivialité",
+    description: "Des grandes tablées, des plats à partager, une ambiance décontractée... Ici, on vient entre amis, en famille, pour passer un bon moment."
+  },
+  {
+    icon: "music",
+    title: "Ambiance guinguette",
+    description: "Musique live, DJ sets, soirées à thème... La Jardinerie, c'est un restaurant où l'on prolonge la soirée."
+  },
+  {
+    icon: "heart",
+    title: "Fait maison",
+    description: "De l'entrée au dessert, nos plats sont préparés sur place avec passion. Pas de compromis sur la qualité."
+  }
+];
+---
+
+<BaseLayout title={title} description={description} keywords={keywords}>
+  <!-- Hero -->
+  <section class="relative py-16 sm:py-20 gradient-hero">
+    <div class="container-site">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <Badge variant="olive">Notre histoire</Badge>
+          <h1 class="font-display text-display-lg sm:text-display-xl text-charcoal">
+            Le Concept<br />
+            <span class="text-olive">La Jardinerie</span>
+          </h1>
+          <p class="text-lg text-charcoal/70 leading-relaxed">
+            Bouillon le midi, guinguette le soir. La Jardinerie, c'est avant tout
+            une histoire de passion : celle de la bonne cuisine, des vins de caractère
+            et des moments partagés.
+          </p>
+        </div>
+
+        <div class="relative">
+          <img
+            src={`${base}assets/les_fondateurs.jpg`}
+            alt="Les fondateurs de La Jardinerie"
+            class="w-full rounded-3xl shadow-medium"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <Section padding="md">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="font-display text-display-sm text-charcoal mb-6">
+        Une aventure gourmande à Toulouges
+      </h2>
+
+      <div class="prose prose-lg text-charcoal/70 space-y-6">
+        <p>
+          Nichée au cœur de Toulouges, à quelques minutes de Perpignan, La Jardinerie est née
+          d'une envie simple : créer un lieu où l'on se sent bien, où l'on mange bien, et où
+          l'on passe de vrais bons moments.
+        </p>
+        <p>
+          Le midi, on vous accueille autour d'un <strong>bouillon réconfortant</strong>,
+          servi à l'assiette, qui change au gré des saisons et de l'humeur du chef.
+          Service rapide, produits frais, pause déjeuner qui a du goût.
+        </p>
+        <p>
+          Le soir, l'ambiance change. La Jardinerie se transforme en <strong>guinguette</strong> :
+          plats à partager, vins de caractère, grandes tablées et musique. C'est l'endroit
+          idéal pour ceux qui refusent d'aller au lit après manger.
+        </p>
+        <p>
+          Notre secret ? Des <strong>produits locaux</strong>, une équipe passionnée et
+          l'envie de vous faire vivre une expérience unique à chaque visite.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Values -->
+  <Section background="white" padding="md">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-display-sm text-charcoal">
+        Nos valeurs
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {values.map((value) => (
+        <Card variant="hover" padding="md" class="text-center">
+          <div class="w-14 h-14 rounded-2xl bg-olive/10 flex items-center justify-center mx-auto mb-4">
+            {value.icon === "leaf" && (
+              <svg class="w-7 h-7 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+              </svg>
+            )}
+            {value.icon === "users" && (
+              <svg class="w-7 h-7 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+              </svg>
+            )}
+            {value.icon === "music" && (
+              <svg class="w-7 h-7 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+              </svg>
+            )}
+            {value.icon === "heart" && (
+              <svg class="w-7 h-7 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            )}
+          </div>
+          <h3 class="font-display text-lg font-semibold text-charcoal mb-2">
+            {value.title}
+          </h3>
+          <p class="text-sm text-charcoal/70">
+            {value.description}
+          </p>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Two Services -->
+  <Section padding="md">
+    <div class="grid lg:grid-cols-2 gap-8">
+      <!-- Midi -->
+      <div class="relative overflow-hidden rounded-3xl">
+        <img
+          src={`${base}assets/IMG_0532.png`}
+          alt="Bouillon du midi à La Jardinerie"
+          loading="lazy"
+          decoding="async"
+          class="w-full aspect-video object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent flex items-end">
+          <div class="p-6 sm:p-8 text-cream">
+            <Badge variant="olive" class="mb-3">Le midi</Badge>
+            <h3 class="font-display text-2xl font-semibold mb-2">Le Bouillon</h3>
+            <p class="text-cream/80 text-sm sm:text-base">
+              12h - 14h • Du mercredi au vendredi<br />
+              Un plat unique qui change régulièrement, servi à l'assiette. Service rapide, produits locaux.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Soir -->
+      <div class="relative overflow-hidden rounded-3xl">
+        <img
+          src={`${base}assets/IMG_0541.png`}
+          alt="Ambiance guinguette le soir à La Jardinerie"
+          loading="lazy"
+          decoding="async"
+          class="w-full aspect-video object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent flex items-end">
+          <div class="p-6 sm:p-8 text-cream">
+            <Badge variant="terracotta" class="mb-3">Le soir</Badge>
+            <h3 class="font-display text-2xl font-semibold mb-2">La Guinguette</h3>
+            <p class="text-cream/80 text-sm sm:text-base">
+              À partir de 19h • Du mardi au samedi<br />
+              Plats à partager, vins de caractère, musique et ambiance. Pour ceux qui refusent d'aller se coucher.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Location -->
+  <Section background="white" padding="md">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <h2 class="font-display text-display-sm text-charcoal">
+          Un cadre unique à Toulouges
+        </h2>
+        <p class="text-charcoal/70 leading-relaxed">
+          À 10 minutes de Perpignan, La Jardinerie vous accueille dans un cadre chaleureux
+          et authentique. Notre terrasse ombragée est le spot idéal pour profiter des beaux
+          jours catalans.
+        </p>
+        <p class="text-charcoal/70 leading-relaxed">
+          Parking gratuit à proximité, accessibilité PMR, et une équipe aux petits soins
+          pour vous accueillir comme il se doit.
+        </p>
+        <Button href={`${base}contact`} variant="secondary">
+          Accès & itinéraire
+        </Button>
+      </div>
+
+      <div>
+        <img
+          src={`${base}assets/resto.jpg`}
+          alt="Intérieur du restaurant La Jardinerie"
+          loading="lazy"
+          decoding="async"
+          class="w-full rounded-3xl shadow-medium"
+        />
+      </div>
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <Section background="olive" padding="md">
+    <div class="text-center space-y-6">
+      <h2 class="font-display text-display-sm text-cream">
+        Envie de découvrir La Jardinerie ?
+      </h2>
+      <p class="text-cream/80 max-w-2xl mx-auto">
+        Réservez votre table et venez vivre l'expérience guinguette à Toulouges.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href={`${base}reserver`} variant="secondary" size="lg" class="border-cream text-cream hover:bg-cream hover:text-olive">
+          Réserver une table
+        </Button>
+        <Button href={`${base}menu`} variant="ghost" size="lg" class="text-cream hover:bg-cream/10">
+          Voir le menu
+        </Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

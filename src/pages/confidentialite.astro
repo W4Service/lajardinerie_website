@@ -1,0 +1,224 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+
+const base = import.meta.env.BASE_URL;
+
+// SEO
+const title = "Politique de Confidentialité";
+const description = "Politique de confidentialité du site La Jardinerie Toulouges. Informations sur la collecte, le traitement et la protection de vos données personnelles.";
+---
+
+<BaseLayout title={title} description={description} noindex={true}>
+  <Section padding="md">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="font-display text-display-md text-charcoal mb-8">
+        Politique de Confidentialité
+      </h1>
+
+      <div class="prose prose-charcoal max-w-none space-y-8">
+        <!-- Introduction -->
+        <section>
+          <p class="text-charcoal/70 leading-relaxed text-lg">
+            La Jardinerie s'engage à protéger la vie privée des utilisateurs de son site. Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos données personnelles.
+          </p>
+        </section>
+
+        <!-- Responsable du traitement -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            1. Responsable du traitement
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Le responsable du traitement des données personnelles est :
+          </p>
+          <address class="not-italic text-charcoal/70 mt-4 p-4 bg-charcoal/5 rounded-xl">
+            <strong>La Jardinerie</strong><br />
+            9 bis Boulevard de Clairfont<br />
+            66350 Toulouges, France<br />
+            Email : contact@lajardinerie.fr
+          </address>
+        </section>
+
+        <!-- Données collectées -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            2. Données personnelles collectées
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Nous collectons les données suivantes uniquement dans le cadre de la réservation en ligne :
+          </p>
+          <ul class="list-disc list-inside text-charcoal/70 mt-4 space-y-2">
+            <li><strong>Nom complet</strong> : pour identifier votre réservation</li>
+            <li><strong>Numéro de téléphone</strong> : pour vous contacter en cas de besoin</li>
+            <li><strong>Adresse email</strong> (optionnel) : pour vous envoyer la confirmation</li>
+            <li><strong>Message</strong> (optionnel) : vos demandes particulières</li>
+            <li><strong>Données de réservation</strong> : date, heure, nombre de couverts</li>
+          </ul>
+        </section>
+
+        <!-- Finalités -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            3. Finalités du traitement
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Vos données personnelles sont collectées pour les finalités suivantes :
+          </p>
+          <ul class="list-disc list-inside text-charcoal/70 mt-4 space-y-2">
+            <li>Gestion de votre réservation (confirmation, rappel, modification)</li>
+            <li>Communication avec vous concernant votre réservation</li>
+            <li>Amélioration de nos services</li>
+            <li>Respect de nos obligations légales</li>
+          </ul>
+        </section>
+
+        <!-- Base légale -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            4. Base légale du traitement
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Le traitement de vos données repose sur :
+          </p>
+          <ul class="list-disc list-inside text-charcoal/70 mt-4 space-y-2">
+            <li><strong>L'exécution d'un contrat</strong> : traitement de votre réservation</li>
+            <li><strong>L'intérêt légitime</strong> : amélioration de nos services</li>
+            <li><strong>Le consentement</strong> : envoi de communications marketing (le cas échéant)</li>
+          </ul>
+        </section>
+
+        <!-- Conservation -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            5. Durée de conservation
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Vos données de réservation sont conservées pendant une durée de <strong>3 ans</strong> à compter de la date de votre dernière réservation, sauf obligation légale contraire.
+          </p>
+          <p class="text-charcoal/70 leading-relaxed mt-4">
+            À l'issue de cette période, vos données sont supprimées ou anonymisées.
+          </p>
+        </section>
+
+        <!-- Destinataires -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            6. Destinataires des données
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Vos données personnelles sont accessibles à :
+          </p>
+          <ul class="list-disc list-inside text-charcoal/70 mt-4 space-y-2">
+            <li>L'équipe de La Jardinerie (gestion des réservations)</li>
+            <li>Nos sous-traitants techniques :
+              <ul class="list-disc list-inside ml-6 mt-2 space-y-1">
+                <li>Supabase (base de données et API) - serveurs en Europe</li>
+                <li>Resend (envoi d'emails de confirmation) - le cas échéant</li>
+              </ul>
+            </li>
+          </ul>
+          <p class="text-charcoal/70 leading-relaxed mt-4">
+            Nous ne vendons ni ne louons vos données personnelles à des tiers.
+          </p>
+        </section>
+
+        <!-- Transferts -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            7. Transferts de données
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Vos données sont principalement hébergées au sein de l'Union Européenne. En cas de transfert hors UE, nous nous assurons que des garanties appropriées sont en place (clauses contractuelles types, décision d'adéquation).
+          </p>
+        </section>
+
+        <!-- Droits -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            8. Vos droits
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Conformément au RGPD, vous disposez des droits suivants :
+          </p>
+          <ul class="list-disc list-inside text-charcoal/70 mt-4 space-y-2">
+            <li><strong>Droit d'accès</strong> : obtenir une copie de vos données</li>
+            <li><strong>Droit de rectification</strong> : corriger vos données inexactes</li>
+            <li><strong>Droit à l'effacement</strong> : demander la suppression de vos données</li>
+            <li><strong>Droit à la limitation</strong> : limiter le traitement de vos données</li>
+            <li><strong>Droit à la portabilité</strong> : recevoir vos données dans un format structuré</li>
+            <li><strong>Droit d'opposition</strong> : vous opposer au traitement de vos données</li>
+          </ul>
+          <p class="text-charcoal/70 leading-relaxed mt-4">
+            Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@lajardinerie.fr" class="text-olive hover:underline">contact@lajardinerie.fr</a>
+          </p>
+          <p class="text-charcoal/70 leading-relaxed mt-4">
+            Vous pouvez également introduire une réclamation auprès de la CNIL : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" class="text-olive hover:underline">www.cnil.fr</a>
+          </p>
+        </section>
+
+        <!-- Cookies -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            9. Cookies
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Notre site utilise uniquement des <strong>cookies techniques strictement nécessaires</strong> au fonctionnement du site. Ces cookies ne nécessitent pas votre consentement.
+          </p>
+          <p class="text-charcoal/70 leading-relaxed mt-4">
+            Nous n'utilisons pas de cookies :
+          </p>
+          <ul class="list-disc list-inside text-charcoal/70 mt-4 space-y-2">
+            <li>Publicitaires ou de ciblage</li>
+            <li>De tracking ou d'analyse comportementale</li>
+            <li>De réseaux sociaux</li>
+          </ul>
+        </section>
+
+        <!-- Sécurité -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            10. Sécurité des données
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, modification, divulgation ou destruction :
+          </p>
+          <ul class="list-disc list-inside text-charcoal/70 mt-4 space-y-2">
+            <li>Chiffrement des données en transit (HTTPS)</li>
+            <li>Accès restreint aux données personnelles</li>
+            <li>Hébergement sécurisé avec Supabase</li>
+            <li>Sauvegardes régulières</li>
+          </ul>
+        </section>
+
+        <!-- Modifications -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            11. Modifications de la politique
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Nous pouvons être amenés à modifier cette politique de confidentialité. En cas de modification substantielle, nous vous en informerons par un avis visible sur notre site.
+          </p>
+        </section>
+
+        <!-- Contact -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            12. Contact
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Pour toute question relative à cette politique de confidentialité ou à vos données personnelles :
+          </p>
+          <ul class="list-disc list-inside text-charcoal/70 mt-4 space-y-2">
+            <li>Par email : <a href="mailto:contact@lajardinerie.fr" class="text-olive hover:underline">contact@lajardinerie.fr</a></li>
+            <li>Par courrier : La Jardinerie, 9 bis Boulevard de Clairfont, 66350 Toulouges</li>
+          </ul>
+        </section>
+
+        <p class="text-sm text-charcoal/50 pt-8 border-t border-charcoal/10">
+          Dernière mise à jour : Janvier 2026
+        </p>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

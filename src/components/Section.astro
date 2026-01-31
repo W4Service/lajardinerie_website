@@ -1,0 +1,41 @@
+---
+interface Props {
+  id?: string;
+  background?: "cream" | "white" | "olive" | "charcoal";
+  padding?: "sm" | "md" | "lg" | "none";
+  class?: string;
+}
+
+const {
+  id,
+  background = "cream",
+  padding = "md",
+  class: className = ""
+} = Astro.props;
+
+const backgroundClasses = {
+  cream: "bg-cream",
+  white: "bg-white",
+  olive: "bg-olive text-cream",
+  charcoal: "bg-charcoal text-cream"
+};
+
+const paddingClasses = {
+  none: "",
+  sm: "py-12 sm:py-16",
+  md: "py-16 sm:py-20 lg:py-24",
+  lg: "py-20 sm:py-28 lg:py-32"
+};
+
+const classes = [
+  backgroundClasses[background],
+  paddingClasses[padding],
+  className
+].filter(Boolean).join(" ");
+---
+
+<section id={id} class={classes}>
+  <div class="container-site">
+    <slot />
+  </div>
+</section>

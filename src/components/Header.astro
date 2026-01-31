@@ -1,0 +1,180 @@
+---
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [
+  { label: "Menu", href: "/menu" },
+  { label: "Réserver", href: "/reserver" },
+  { label: "Événements", href: "/evenements" },
+  { label: "Le concept", href: "/concept" },
+  { label: "Contact", href: "/contact" }
+];
+
+const currentPath = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
+
+function isActive(href: string): boolean {
+  const fullHref = `${base}${href}`.replace(/\/+/g, "/");
+  return currentPath === fullHref || currentPath === fullHref.replace(/\/$/, "");
+}
+---
+
+<header
+  class="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-md border-b border-charcoal/5"
+  id="main-header"
+>
+  <nav class="container-site" aria-label="Navigation principale">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <a
+        href={`${base}/`}
+        class="flex items-center gap-3 group"
+        aria-label="Accueil La Jardinerie"
+      >
+        <span class="font-display text-xl lg:text-2xl font-bold text-olive group-hover:text-olive-600 transition-colors">
+          La Jardinerie
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-1">
+        {navItems.map((item) => (
+          <a
+            href={`${base}${item.href}`}
+            class:list={[
+              "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200",
+              isActive(item.href)
+                ? "bg-olive/10 text-olive"
+                : "text-charcoal/70 hover:text-charcoal hover:bg-charcoal/5"
+            ]}
+            aria-current={isActive(item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA Desktop -->
+      <a
+        href={`${base}/reserver`}
+        class="hidden lg:inline-flex btn-primary btn-sm"
+      >
+        Réserver une table
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        class="lg:hidden p-2 -mr-2 text-charcoal hover:bg-charcoal/5 rounded-lg transition-colors"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Ouvrir le menu"
+        id="mobile-menu-button"
+      >
+        <svg
+          class="w-6 h-6 menu-icon"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+        <svg
+          class="w-6 h-6 close-icon hidden"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div
+      id="mobile-menu"
+      class="lg:hidden hidden pb-4"
+      aria-label="Menu mobile"
+    >
+      <div class="flex flex-col gap-1 pt-2 border-t border-charcoal/10">
+        {navItems.map((item) => (
+          <a
+            href={`${base}${item.href}`}
+            class:list={[
+              "px-4 py-3 rounded-lg font-medium transition-colors",
+              isActive(item.href)
+                ? "bg-olive/10 text-olive"
+                : "text-charcoal/70 hover:bg-charcoal/5"
+            ]}
+            aria-current={isActive(item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))}
+        <a
+          href={`${base}/reserver`}
+          class="btn-primary mt-2"
+        >
+          Réserver une table
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Spacer for fixed header -->
+<div class="h-16 lg:h-20" aria-hidden="true"></div>
+
+<script>
+  const menuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuIcon = menuButton?.querySelector(".menu-icon");
+  const closeIcon = menuButton?.querySelector(".close-icon");
+
+  menuButton?.addEventListener("click", () => {
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+
+    menuButton.setAttribute("aria-expanded", String(!isOpen));
+    menuButton.setAttribute("aria-label", isOpen ? "Ouvrir le menu" : "Fermer le menu");
+    mobileMenu?.classList.toggle("hidden");
+    menuIcon?.classList.toggle("hidden");
+    closeIcon?.classList.toggle("hidden");
+  });
+
+  // Close menu on escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menuButton?.getAttribute("aria-expanded") === "true") {
+      menuButton.click();
+    }
+  });
+
+  // Header scroll effect
+  const header = document.getElementById("main-header");
+  let lastScroll = 0;
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > 100) {
+      header?.classList.add("shadow-soft");
+    } else {
+      header?.classList.remove("shadow-soft");
+    }
+
+    lastScroll = currentScroll;
+  }, { passive: true });
+</script>

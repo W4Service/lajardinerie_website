@@ -1,0 +1,37 @@
+---
+interface Props {
+  variant?: "olive" | "terracotta" | "neutral";
+  size?: "sm" | "md";
+  class?: string;
+}
+
+const {
+  variant = "olive",
+  size = "md",
+  class: className = ""
+} = Astro.props;
+
+const baseClasses = "inline-flex items-center gap-1.5 rounded-full font-medium";
+
+const variantClasses = {
+  olive: "bg-olive/10 text-olive",
+  terracotta: "bg-terracotta/10 text-terracotta",
+  neutral: "bg-charcoal/10 text-charcoal"
+};
+
+const sizeClasses = {
+  sm: "px-2 py-0.5 text-xs",
+  md: "px-3 py-1 text-sm"
+};
+
+const classes = [
+  baseClasses,
+  variantClasses[variant],
+  sizeClasses[size],
+  className
+].filter(Boolean).join(" ");
+---
+
+<span class={classes}>
+  <slot />
+</span>

@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-body text-charcoal bg-cream;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-olive ring-offset-2 ring-offset-cream;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-olive text-cream;
+  }
+}
+
+/* Component styles */
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 font-semibold transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-olive text-cream hover:bg-olive-600 active:bg-olive-700 shadow-soft hover:shadow-medium;
+  }
+
+  .btn-secondary {
+    @apply btn border-2 border-olive text-olive hover:bg-olive hover:text-cream;
+  }
+
+  .btn-ghost {
+    @apply btn text-olive hover:bg-olive/10;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .card {
+    @apply rounded-2xl border border-charcoal/10 bg-white/60 backdrop-blur-sm p-6 shadow-soft;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-300 hover:shadow-medium hover:-translate-y-1;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium;
+  }
+
+  .badge-olive {
+    @apply badge bg-olive/10 text-olive;
+  }
+
+  .badge-terracotta {
+    @apply badge bg-terracotta/10 text-terracotta;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-charcoal/15 bg-white px-4 py-3 text-charcoal placeholder:text-charcoal/40 transition-colors duration-200;
+    @apply focus:border-olive focus:ring-2 focus:ring-olive/20;
+  }
+
+  .input-error {
+    @apply border-error focus:border-error focus:ring-error/20;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-charcoal/80 mb-1.5;
+  }
+
+  .link {
+    @apply text-olive underline underline-offset-2 decoration-olive/30 hover:decoration-olive transition-colors;
+  }
+
+  .prose-jardinerie {
+    @apply prose prose-charcoal prose-headings:font-display prose-headings:text-charcoal prose-a:text-olive prose-strong:text-charcoal;
+  }
+}
+
+/* Utility styles */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-overlay {
+    @apply bg-gradient-to-t from-charcoal/60 via-charcoal/20 to-transparent;
+  }
+
+  .gradient-hero {
+    background: linear-gradient(
+      135deg,
+      rgba(123, 122, 42, 0.05) 0%,
+      rgba(246, 241, 230, 0) 50%,
+      rgba(139, 74, 43, 0.03) 100%
+    );
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Image aspect ratios */
+  .aspect-card {
+    aspect-ratio: 4/3;
+  }
+
+  .aspect-hero {
+    aspect-ratio: 16/9;
+  }
+
+  .aspect-square {
+    aspect-ratio: 1/1;
+  }
+}

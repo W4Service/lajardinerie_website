@@ -1,0 +1,164 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+
+const base = import.meta.env.BASE_URL;
+
+// SEO
+const title = "Mentions Légales";
+const description = "Mentions légales du site La Jardinerie Toulouges. Informations sur l'éditeur, l'hébergeur et les conditions d'utilisation du site.";
+---
+
+<BaseLayout title={title} description={description} noindex={true}>
+  <Section padding="md">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="font-display text-display-md text-charcoal mb-8">
+        Mentions Légales
+      </h1>
+
+      <div class="prose prose-charcoal max-w-none space-y-8">
+        <!-- Éditeur -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            1. Éditeur du site
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Le site <strong>lajardinerie.fr</strong> est édité par :
+          </p>
+          <address class="not-italic text-charcoal/70 mt-4 p-4 bg-charcoal/5 rounded-xl">
+            <strong>La Jardinerie</strong><br />
+            9 bis Boulevard de Clairfont<br />
+            66350 Toulouges, France<br /><br />
+            Téléphone : 04 00 00 00 00<br />
+            Email : contact@lajardinerie.fr<br /><br />
+            SIRET : [À compléter]<br />
+            RCS Perpignan : [À compléter]<br />
+            TVA intracommunautaire : [À compléter]
+          </address>
+          <p class="text-charcoal/70 leading-relaxed mt-4">
+            <strong>Directeur de la publication :</strong> [Nom du dirigeant à compléter]
+          </p>
+        </section>
+
+        <!-- Hébergement -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            2. Hébergement
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Le site est hébergé par :
+          </p>
+          <address class="not-italic text-charcoal/70 mt-4 p-4 bg-charcoal/5 rounded-xl">
+            <strong>GitHub, Inc.</strong><br />
+            88 Colin P Kelly Jr St<br />
+            San Francisco, CA 94107<br />
+            États-Unis<br />
+            <a href="https://github.com" class="text-olive hover:underline">https://github.com</a>
+          </address>
+        </section>
+
+        <!-- Conception -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            3. Conception et réalisation
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Site conçu et développé par :
+          </p>
+          <address class="not-italic text-charcoal/70 mt-4 p-4 bg-charcoal/5 rounded-xl">
+            <strong>W4S</strong><br />
+            <a href="https://w4s.fr" target="_blank" rel="noopener noreferrer" class="text-olive hover:underline">https://w4s.fr</a>
+          </address>
+        </section>
+
+        <!-- Propriété intellectuelle -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            4. Propriété intellectuelle
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            L'ensemble du contenu de ce site (textes, images, vidéos, logos, graphismes, etc.) est protégé par le droit d'auteur et appartient à La Jardinerie ou à ses partenaires.
+          </p>
+          <p class="text-charcoal/70 leading-relaxed mt-4">
+            Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de La Jardinerie.
+          </p>
+          <p class="text-charcoal/70 leading-relaxed mt-4">
+            Toute exploitation non autorisée du site ou de son contenu serait constitutive d'une contrefaçon et sanctionnée conformément aux dispositions des articles L.335-2 et suivants du Code de la Propriété Intellectuelle.
+          </p>
+        </section>
+
+        <!-- Données personnelles -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            5. Protection des données personnelles
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Les informations concernant la collecte et le traitement des données personnelles sont détaillées dans notre <a href={`${base}confidentialite`} class="text-olive hover:underline">Politique de confidentialité</a>.
+          </p>
+        </section>
+
+        <!-- Cookies -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            6. Cookies
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Ce site utilise uniquement des cookies techniques nécessaires à son bon fonctionnement. Aucun cookie de tracking ou publicitaire n'est utilisé.
+          </p>
+        </section>
+
+        <!-- Responsabilité -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            7. Limitation de responsabilité
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            La Jardinerie s'efforce d'assurer au mieux de ses possibilités l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, La Jardinerie ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition sur ce site.
+          </p>
+          <p class="text-charcoal/70 leading-relaxed mt-4">
+            La Jardinerie décline toute responsabilité pour toute imprécision, inexactitude ou omission portant sur des informations disponibles sur ce site.
+          </p>
+        </section>
+
+        <!-- Liens externes -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            8. Liens hypertextes
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Le site peut contenir des liens hypertextes vers d'autres sites. La Jardinerie n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.
+          </p>
+        </section>
+
+        <!-- Droit applicable -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            9. Droit applicable
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents.
+          </p>
+        </section>
+
+        <!-- Contact -->
+        <section>
+          <h2 class="font-display text-xl font-semibold text-charcoal mb-4">
+            10. Contact
+          </h2>
+          <p class="text-charcoal/70 leading-relaxed">
+            Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter :
+          </p>
+          <ul class="list-disc list-inside text-charcoal/70 mt-4 space-y-2">
+            <li>Par email : <a href="mailto:contact@lajardinerie.fr" class="text-olive hover:underline">contact@lajardinerie.fr</a></li>
+            <li>Par téléphone : 04 00 00 00 00</li>
+            <li>Par courrier : La Jardinerie, 9 bis Boulevard de Clairfont, 66350 Toulouges</li>
+          </ul>
+        </section>
+
+        <p class="text-sm text-charcoal/50 pt-8 border-t border-charcoal/10">
+          Dernière mise à jour : Janvier 2026
+        </p>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

@@ -1,0 +1,336 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import Card from "../components/Card.astro";
+import Badge from "../components/Badge.astro";
+import Button from "../components/Button.astro";
+import GalleryGrid from "../components/GalleryGrid.astro";
+import EventCard from "../components/EventCard.astro";
+import FAQ from "../components/FAQ.astro";
+
+const base = import.meta.env.BASE_URL;
+
+// SEO
+const title = "La Jardinerie Toulouges — Guinguette & Bouillon | Réserver";
+const description = "Bouillon le midi, guinguette le soir : plats à partager, vins de qualité, musique & grandes tablées à Toulouges près de Perpignan. Réservez en ligne.";
+const keywords = ["restaurant Toulouges", "guinguette Toulouges", "bouillon Toulouges", "restaurant Perpignan", "bar à vin Toulouges", "plats à partager", "soirée DJ Toulouges"];
+
+// Gallery images
+const galleryImages = [
+  { src: "assets/IMG_0541.png", alt: "Intérieur chaleureux du restaurant La Jardinerie", span: "wide" as const },
+  { src: "assets/IMG_0540.png", alt: "Plats à partager servis à La Jardinerie" },
+  { src: "assets/IMG_0535.png", alt: "Ambiance guinguette" },
+  { src: "assets/IMG_0536.png", alt: "Sélection de vins" },
+  { src: "assets/IMG_0531.png", alt: "Tablée conviviale", span: "tall" as const },
+  { src: "assets/IMG_0532.png", alt: "Cuisine du terroir" },
+];
+
+// Events
+const upcomingEvents = [
+  {
+    title: "Soirée DJ & Tapas",
+    date: "2026-02-14",
+    time: "20h",
+    description: "Ambiance festive pour la Saint-Valentin. DJ set et carte spéciale tapas à partager.",
+    badge: "Saint-Valentin"
+  },
+  {
+    title: "Concert Acoustique",
+    date: "2026-02-21",
+    time: "20h30",
+    description: "Musique live, bonne humeur et plats gourmands au programme de cette soirée acoustique."
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "Peut-on réserver pour un groupe ?",
+    answer: "Bien sûr ! Nous accueillons les groupes jusqu'à 20 personnes. Pour les tablées de 8 personnes ou plus, merci de préciser lors de votre réservation en ligne ou de nous contacter directement."
+  },
+  {
+    question: "Jusqu'à quelle heure le service du soir ?",
+    answer: "Le service du soir commence à 19h. Les dernières commandes sont prises à 21h45, mais vous pouvez rester profiter de l'ambiance jusqu'à minuit."
+  },
+  {
+    question: "Y a-t-il des options végétariennes ?",
+    answer: "Notre carte propose toujours plusieurs options végétariennes. N'hésitez pas à nous signaler vos restrictions alimentaires lors de la réservation, notre chef s'adapte avec plaisir."
+  },
+  {
+    question: "Acceptez-vous les privatisations ?",
+    answer: "Oui, La Jardinerie est disponible pour vos événements privés (anniversaires, réunions de famille, séminaires...). <a href='" + base + "/contact' class='link'>Contactez-nous</a> pour en discuter."
+  }
+];
+---
+
+<BaseLayout title={title} description={description} keywords={keywords}>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden gradient-hero">
+    <!-- Particles Canvas (lazy-loaded) -->
+    <canvas
+      id="particles-canvas"
+      class="absolute inset-0 pointer-events-none opacity-60"
+      aria-hidden="true"
+    ></canvas>
+
+    <div class="container-site relative py-20 sm:py-28 lg:py-36">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Content -->
+        <div class="space-y-6 text-center lg:text-left">
+          <Badge variant="olive">Restaurant à Toulouges</Badge>
+
+          <h1 class="font-display text-display-lg sm:text-display-xl text-charcoal text-balance">
+            La Jardinerie à Toulouges
+            <span class="block text-olive">Bouillon le midi, guinguette le soir</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-charcoal/70 max-w-xl mx-auto lg:mx-0 text-balance">
+            Produits de saison, esprit canaille, grandes tablées, bons vins…
+            et de vrais moments à partager.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+            <Button href={`${base}/reserver`} variant="primary" size="lg">
+              Réserver une table
+            </Button>
+            <Button href={`${base}/menu`} variant="secondary" size="lg">
+              Voir le menu
+            </Button>
+          </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="relative">
+          <div class="relative rounded-3xl overflow-hidden shadow-medium">
+            <img
+              src={`${base}/assets/resto.jpg`}
+              alt="Intérieur du restaurant La Jardinerie à Toulouges"
+              width="600"
+              height="450"
+              class="w-full aspect-card object-cover"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Midi / Soir Section -->
+  <Section id="concept" background="white">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-display-md text-charcoal">
+        Deux ambiances, un même plaisir
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Midi -->
+      <Card variant="highlight" padding="lg">
+        <div class="space-y-4">
+          <Badge variant="olive">Le midi</Badge>
+          <h3 class="font-display text-display-sm text-charcoal">
+            12h – 14h
+          </h3>
+          <p class="text-charcoal/70 leading-relaxed">
+            Un bouillon servi à l'assiette qui change régulièrement. Service rapide, produits locaux,
+            pause déj' qui a du goût. L'idéal pour une escapade gourmande sur le temps du midi.
+          </p>
+          <div class="pt-2">
+            <Button href={`${base}/menu`} variant="ghost" size="sm">
+              Découvrir le menu midi
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </Button>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Soir -->
+      <Card variant="highlight" padding="lg">
+        <div class="space-y-4">
+          <Badge variant="terracotta">Le soir</Badge>
+          <h3 class="font-display text-display-sm text-charcoal">
+            À partir de 19h
+          </h3>
+          <p class="text-charcoal/70 leading-relaxed">
+            Plats à partager, esprit guinguette, musique & ambiance. Pour ceux qui refusent
+            catégoriquement d'aller au lit après manger. Soirées thématiques et DJ sets réguliers.
+          </p>
+          <div class="pt-2">
+            <Button href={`${base}/evenements`} variant="ghost" size="sm">
+              Voir les soirées
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </Button>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </Section>
+
+  <!-- Menu Preview -->
+  <Section id="menu-preview">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <Badge>Notre carte</Badge>
+        <h2 class="font-display text-display-md text-charcoal">
+          Des produits frais, des saisons & des arrivages
+        </h2>
+        <p class="text-charcoal/70 leading-relaxed">
+          Notre chef compose des plats généreux à partager, au gré des saisons et des producteurs locaux.
+          Entrées à picorer, plats signatures, desserts maison — et une belle sélection de vins
+          pour accompagner le tout.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <Badge variant="olive" size="sm">Produits locaux</Badge>
+          <Badge variant="olive" size="sm">De saison</Badge>
+          <Badge variant="olive" size="sm">Fait maison</Badge>
+        </div>
+        <Button href={`${base}/menu`} variant="primary">
+          Découvrir la carte complète
+        </Button>
+      </div>
+
+      <div class="relative">
+        <img
+          src={`${base}/assets/IMG_0538.png`}
+          alt="Plats à partager de La Jardinerie"
+          loading="lazy"
+          decoding="async"
+          class="w-full rounded-3xl shadow-medium"
+        />
+      </div>
+    </div>
+  </Section>
+
+  <!-- Events Section -->
+  <Section id="evenements" background="white">
+    <div class="text-center mb-12">
+      <Badge variant="terracotta">Prochainement</Badge>
+      <h2 class="font-display text-display-md text-charcoal mt-4">
+        Soirées & événements
+      </h2>
+      <p class="mt-3 text-charcoal/70 max-w-2xl mx-auto">
+        Musique live, DJ sets, soirées à thème… À La Jardinerie, on mange bien et on fait la fête.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {upcomingEvents.map((event) => (
+        <EventCard {...event} />
+      ))}
+    </div>
+
+    <div class="text-center mt-10">
+      <Button href={`${base}/evenements`} variant="secondary">
+        Voir tous les événements
+      </Button>
+    </div>
+  </Section>
+
+  <!-- Gallery Section -->
+  <Section id="galerie">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-display-md text-charcoal">
+        L'ambiance en images
+      </h2>
+      <p class="mt-3 text-charcoal/70">
+        Découvrez l'atmosphère chaleureuse de La Jardinerie.
+      </p>
+    </div>
+
+    <GalleryGrid images={galleryImages} />
+  </Section>
+
+  <!-- Team / Founders -->
+  <Section background="white">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <img
+          src={`${base}/assets/les_fondateurs.jpg`}
+          alt="Les fondateurs de La Jardinerie"
+          loading="lazy"
+          decoding="async"
+          class="w-full rounded-3xl shadow-medium"
+        />
+      </div>
+
+      <div class="space-y-6 order-1 lg:order-2">
+        <Badge>Notre histoire</Badge>
+        <h2 class="font-display text-display-md text-charcoal">
+          Une aventure gourmande à Toulouges
+        </h2>
+        <p class="text-charcoal/70 leading-relaxed">
+          La Jardinerie, c'est avant tout une histoire de passion. Passionnés de bonne cuisine,
+          de vins de caractère et de moments partagés, nous avons créé ce lieu pour offrir
+          une expérience unique : celle d'un repas qui se prolonge, où l'on refait le monde
+          autour d'une belle tablée.
+        </p>
+        <Button href={`${base}/concept`} variant="secondary">
+          Découvrir notre concept
+        </Button>
+      </div>
+    </div>
+  </Section>
+
+  <!-- FAQ Section -->
+  <Section id="faq">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="font-display text-display-md text-charcoal">
+          Questions fréquentes
+        </h2>
+      </div>
+
+      <FAQ items={faqItems} />
+    </div>
+  </Section>
+
+  <!-- Final CTA Section -->
+  <Section background="olive" padding="lg">
+    <div class="text-center space-y-6">
+      <h2 class="font-display text-display-md text-cream">
+        Envie d'une tablée mémorable ?
+      </h2>
+      <p class="text-cream/80 max-w-2xl mx-auto">
+        Réservez votre table en quelques clics et venez découvrir l'ambiance unique de La Jardinerie.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+        <Button href={`${base}/reserver`} variant="secondary" size="lg" class="border-cream text-cream hover:bg-cream hover:text-olive">
+          Réserver maintenant
+        </Button>
+        <Button href={`${base}/contact`} variant="ghost" size="lg" class="text-cream hover:bg-cream/10">
+          Nous contacter
+        </Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<!-- Particles Script (lazy-loaded) -->
+<script>
+  // Lazy load particles animation
+  const canvas = document.getElementById("particles-canvas") as HTMLCanvasElement;
+
+  if (canvas) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+          import("../components/Particles3D.client").then(({ mountParticles }) => {
+            mountParticles(canvas);
+          });
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(canvas);
+  }
+</script>

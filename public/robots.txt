@@ -1,0 +1,15 @@
+# Robots.txt for La Jardinerie
+# https://lajardinerie.fr
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://VOTRE_USERNAME.github.io/lajardinerie_website/sitemap-index.xml
+
+# Block sensitive paths
+Disallow: /api/
+Disallow: /_astro/
+
+# Crawl delay (optional, for polite crawling)
+Crawl-delay: 1
