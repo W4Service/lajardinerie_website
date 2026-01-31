@@ -21,7 +21,7 @@ const spanClasses = {
 ---
 
 <div class={`grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 ${className}`}>
-  {images.map((image, index) => (
+  {images.map((image) => (
     <div
       class={`relative overflow-hidden rounded-2xl group ${spanClasses[image.span || "normal"]}`}
     >
@@ -30,7 +30,9 @@ const spanClasses = {
         alt={image.alt}
         loading="lazy"
         decoding="async"
-        class="w-full h-full object-cover aspect-square transition-transform duration-500 group-hover:scale-105"
+        width="400"
+        height="400"
+        class="w-full object-cover aspect-square transition-transform duration-500 group-hover:scale-105"
       />
       <div class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-colors duration-300" />
     </div>

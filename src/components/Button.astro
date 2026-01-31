@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: "primary" | "secondary" | "ghost";
+  variant?: "primary" | "secondary" | "ghost" | "secondary-light" | "ghost-light";
   size?: "sm" | "md" | "lg";
   href?: string;
   type?: "button" | "submit" | "reset";
@@ -24,7 +24,9 @@ const baseClasses = "inline-flex items-center justify-center gap-2 rounded-xl fo
 const variantClasses = {
   primary: "bg-olive text-cream hover:bg-olive-600 active:bg-olive-700 shadow-soft hover:shadow-medium",
   secondary: "border-2 border-olive text-olive hover:bg-olive hover:text-cream",
-  ghost: "text-olive hover:bg-olive/10"
+  ghost: "text-olive hover:bg-olive/10",
+  "secondary-light": "border-2 border-cream text-cream hover:bg-cream hover:text-olive",
+  "ghost-light": "text-cream hover:bg-cream/10"
 };
 
 const sizeClasses = {
