@@ -17,12 +17,12 @@ const keywords = ["restaurant Toulouges", "guinguette Toulouges", "bouillon Toul
 
 // Gallery images
 const galleryImages = [
-  { src: "assets/IMG_0541.png", alt: "Intérieur chaleureux du restaurant La Jardinerie", span: "wide" as const },
-  { src: "assets/IMG_0540.png", alt: "Plats à partager servis à La Jardinerie" },
-  { src: "assets/IMG_0535.png", alt: "Ambiance guinguette" },
-  { src: "assets/IMG_0536.png", alt: "Sélection de vins" },
-  { src: "assets/IMG_0531.png", alt: "Tablée conviviale", span: "tall" as const },
-  { src: "assets/IMG_0532.png", alt: "Cuisine du terroir" },
+  { src: "assets/salle-restaurant.webp", alt: "Salle du restaurant La Jardinerie avec son olivier centenaire et ambiance conviviale", span: "wide" as const },
+  { src: "assets/plats-service.webp", alt: "Le chef assaisonne les plats généreux servis à La Jardinerie — viandes grillées et frites maison" },
+  { src: "assets/verres-vin.webp", alt: "Verres de vin rouge aux couleurs de La Jardinerie — sélection de vins de qualité" },
+  { src: "assets/plateau-partage.webp", alt: "Grand plateau de tapas à partager — charcuteries, œufs, fromages et spécialités maison", span: "tall" as const },
+  { src: "assets/cote-boeuf-grill.webp", alt: "Côte de bœuf label Transhumancia grillée au feu de bois" },
+  { src: "assets/service-vin.webp", alt: "Service du vin à table — accueil chaleureux et conseils personnalisés" },
 ];
 
 // Events
@@ -103,8 +103,8 @@ const faqItems = [
         <div class="relative">
           <div class="relative rounded-3xl overflow-hidden shadow-medium">
             <img
-              src={`${base}/assets/resto.jpg`}
-              alt="Intérieur du restaurant La Jardinerie à Toulouges"
+              src={`${base}/assets/salle-restaurant.webp`}
+              alt="Salle du restaurant La Jardinerie à Toulouges avec son olivier centenaire et tables en bois"
               width="600"
               height="450"
               class="w-full aspect-card object-cover"
@@ -199,8 +199,8 @@ const faqItems = [
 
       <div class="relative">
         <img
-          src={`${base}/assets/IMG_0538.png`}
-          alt="Plats à partager de La Jardinerie"
+          src={`${base}/assets/plateau-partage.webp`}
+          alt="Plateau de tapas et plats à partager — charcuteries, fromages et spécialités catalanes"
           loading="lazy"
           decoding="async"
           class="w-full rounded-3xl shadow-medium"
@@ -253,8 +253,8 @@ const faqItems = [
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       <div class="order-2 lg:order-1">
         <img
-          src={`${base}/assets/les_fondateurs.jpg`}
-          alt="Les fondateurs de La Jardinerie"
+          src={`${base}/assets/service-vin.webp`}
+          alt="Service personnalisé à La Jardinerie — un membre de l'équipe ouvre une bouteille de vin pour les clients"
           loading="lazy"
           decoding="async"
           class="w-full rounded-3xl shadow-medium"
