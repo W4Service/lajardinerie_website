@@ -7,7 +7,7 @@ const GITHUB_ORG = "Wuilhome";
 const REPO_NAME = "lajardinerie_website";
 
 export default defineConfig({
-  site: `https://${GITHUB_ORG}.github.io`,
+  site: `https://${GITHUB_ORG}.github.io/${REPO_NAME}`,
   base: `/${REPO_NAME}`,
   integrations: [tailwind(), sitemap()],
   build: {
